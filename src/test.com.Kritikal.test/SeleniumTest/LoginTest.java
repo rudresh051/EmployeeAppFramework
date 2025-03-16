@@ -43,7 +43,7 @@ public class LoginTest {
 //        driver.findElement(By.xpath("//div[contains(text(),'Sign in')]")).click();
 //
         LoginPage page = new LoginPage(driver);
-        page.Login("washstudent","history101");
+        page.Login("test","test");
 
     }
 }
