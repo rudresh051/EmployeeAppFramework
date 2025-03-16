@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 //package test.com.Kritikal.test.Pages;
 
 
@@ -10,22 +10,23 @@ import org.openqa.selenium.support.How;
 
 public class LoginPage extends BasePage{
 
-    public LoginPage(WebDriver driver){
-        super(driver);
+    public LoginPage(){
+
     }
 
-    @FindBy(how = How.XPATH, using = "//input[@placeholder='Username']")
+    @FindBy(how = How.NAME, using = "UserName")
     public WebElement txtUserName;
 
-    @FindBy(how = How.XPATH, using = "//input[@placeholder='Password']")
+    @FindBy(how = How.NAME, using = "Password")
     public WebElement txtPassword;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(text(),'Sign in')]")
+    @FindBy(how = How.XPATH, using = "//input[@value='Log in']")
     public WebElement btnLogin;
 
-    public void Login(String userName, String password){
+    public void Login(String userName, String password) throws InterruptedException {
         txtUserName.sendKeys(userName);
         txtPassword.sendKeys(password);
+        Thread.sleep(2000);
         btnLogin.click();
     }
 

@@ -1,6 +1,8 @@
-package SeleniumTest;
+package seleniumtest;
 
-import Pages.LoginPage;
+import com.kritikal.framework.base.DriverContext;
+import pages.HomePage;
+import pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +12,7 @@ import org.testng.annotations.Test;
 
 
 public class LoginTest {
-    private WebDriver driver; // Declare WebDriver instance
+//    private WebDriver driver; // Declare WebDriver instance
 
     @BeforeMethod
     public void Initialize(){
@@ -21,9 +23,10 @@ public class LoginTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors"); // Ignore SSL warnings
 
-        driver = new ChromeDriver(options);
+        DriverContext.Driver = new ChromeDriver(options);
 
-        driver.navigate().to("https://test.thestoryofamerica.us/signin?returnUrl=/");
+//        driver.navigate().to("https://test.thestoryofamerica.us/signin?returnUrl=/");
+        DriverContext.Driver.navigate().to("http://localhost:64429/");
 
 
         // Method2 - Handle SSL warning if present
@@ -37,13 +40,19 @@ public class LoginTest {
     }
 
     @Test
-    public void login(){
+    public void login() throws InterruptedException {
 //        driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys("test");
 //        driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("test");
 //        driver.findElement(By.xpath("//div[contains(text(),'Sign in')]")).click();
 //
-        LoginPage page = new LoginPage(driver);
-        page.Login("test","test");
+
+        HomePage homePage = new HomePage();
+        homePage.ClickLogin();
+
+        Thread.sleep(3000);
+
+        LoginPage page = new LoginPage();
+        page.Login("admin","password");
 
     }
 }
