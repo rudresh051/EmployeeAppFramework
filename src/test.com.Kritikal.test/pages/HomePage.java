@@ -15,7 +15,8 @@ public class HomePage extends BasePage {
     @FindBy(how = How.LINK_TEXT, using = "Employee List")
     public WebElement lnkEmployeeList;
 
-    public void ClickLogin() {
+    public LoginPage ClickLogin() {
         lnkLogin.click();
+        return new LoginPage();
     }
 }

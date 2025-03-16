@@ -23,11 +23,12 @@ public class LoginPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//input[@value='Log in']")
     public WebElement btnLogin;
 
-    public void Login(String userName, String password) throws InterruptedException {
+    public BasePage Login(String userName, String password) throws InterruptedException {
         txtUserName.sendKeys(userName);
         txtPassword.sendKeys(password);
         Thread.sleep(2000);
         btnLogin.click();
+        return new HomePage();
     }
 
 }

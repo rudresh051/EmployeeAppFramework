@@ -47,12 +47,12 @@ public class LoginTest {
 //
 
         HomePage homePage = new HomePage();
-        homePage.ClickLogin();
+        LoginPage loginPage = homePage.ClickLogin();
 
         Thread.sleep(3000);
 
-        LoginPage page = new LoginPage();
-        page.Login("admin","password");
+
+        loginPage   .Login("admin","password");
 
     }
 }
