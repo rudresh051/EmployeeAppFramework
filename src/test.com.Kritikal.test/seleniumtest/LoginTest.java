@@ -48,19 +48,13 @@ public class LoginTest extends Base {
 //        driver.findElement(By.xpath("//div[contains(text(),'Sign in')]")).click();
 //
 
-        HomePage homePage = new HomePage();
-        
-        // Method2
-        CurrentPage = homePage.ClickLogin();
+        CurrentPage = GetInstance(HomePage.class);
+        CurrentPage = CurrentPage.As(HomePage.class).ClickLogin();
+
         Thread.sleep(3000);
-        ((LoginPage) CurrentPage).Login("admin","password");
+        CurrentPage.As(LoginPage.class).Login("admin","password");
 
 
-/*        Method1
-         CurrentPage = homePage.ClickLogin() -- type BasePage
-         CurrentPage.Login("admin", "password")*/
-
-//        loginPage.Login("admin","password");
 
     }
 }

@@ -28,7 +28,7 @@ public class LoginPage extends BasePage{
         txtPassword.sendKeys(password);
         Thread.sleep(2000);
         btnLogin.click();
-        return new HomePage();
+        return GetInstance(HomePage.class);
     }
 
 }

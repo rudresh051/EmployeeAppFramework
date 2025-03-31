@@ -17,21 +17,8 @@ public class HomePage extends BasePage {
 
     // why are we using BaePage here?
     // All pages extends BasePage as our framework rules
-    public BasePage ClickLogin() {
+    public LoginPage ClickLogin() {
         lnkLogin.click();
-
-        // return login page after click
-        // why are we returning a new LoginPage()? Why not just return LoginPage()?
-//        because we are returning a new instance of the LoginPage
-//        if we return LoginPage() it will return the same instance of the LoginPage
-//        which is not what we want
-//        we want to return a new instance of the LoginPage
-//        so that we can use the new instance to perform the login action
-//        and not the same instance of the LoginPage
-//        which will not be able to perform the login action
-//        because the login action is not defined in the LoginPage
-//        but in the HomePage
-//        so we need to return a new instance of the LoginPage
-        return new LoginPage();
+        return GetInstance(LoginPage.class);
     }
 }
