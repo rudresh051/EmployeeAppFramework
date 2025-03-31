@@ -1,5 +1,6 @@
 package seleniumtest;
 
+import com.kritikal.framework.base.Base;
 import com.kritikal.framework.base.DriverContext;
 import pages.HomePage;
 import pages.LoginPage;
@@ -9,9 +10,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import static com.kritikal.framework.base.Base.CurrentPage;
 
 
-public class LoginTest {
+public class LoginTest extends Base {
 //    private WebDriver driver; // Declare WebDriver instance
 
     @BeforeMethod
@@ -40,19 +42,25 @@ public class LoginTest {
     }
 
     @Test
-    public void login() throws InterruptedException {
+    public void Login() throws InterruptedException {
 //        driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys("test");
 //        driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("test");
 //        driver.findElement(By.xpath("//div[contains(text(),'Sign in')]")).click();
 //
 
         HomePage homePage = new HomePage();
-        LoginPage loginPage = homePage.ClickLogin();
-
+        
+        // Method2
+        CurrentPage = homePage.ClickLogin();
         Thread.sleep(3000);
+        ((LoginPage) CurrentPage).Login("admin","password");
 
 
-        loginPage   .Login("admin","password");
+/*        Method1
+         CurrentPage = homePage.ClickLogin() -- type BasePage
+         CurrentPage.Login("admin", "password")*/
+
+//        loginPage.Login("admin","password");
 
     }
 }
