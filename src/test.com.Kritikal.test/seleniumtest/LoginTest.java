@@ -1,7 +1,10 @@
 package seleniumtest;
 
 import com.kritikal.framework.base.Base;
+import com.kritikal.framework.base.BrowserType;
+import com.kritikal.framework.base.BrowserType;
 import com.kritikal.framework.base.DriverContext;
+import com.kritikal.framework.base.FrameworkInitialize;
 import pages.HomePage;
 import pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,33 +16,43 @@ import org.testng.annotations.Test;
 import static com.kritikal.framework.base.Base.CurrentPage;
 
 
-public class LoginTest extends Base {
-//    private WebDriver driver; // Declare WebDriver instance
+public class LoginTest extends FrameworkInitialize {
+
 
     @BeforeMethod
     public void Initialize(){
-        // Setup ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-
-//      Method1 - Skip SSL warnings entirely, you can configure ChromeOptions:
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--ignore-certificate-errors"); // Ignore SSL warnings
-
-        DriverContext.Driver = new ChromeDriver(options);
-
-//        driver.navigate().to("https://test.thestoryofamerica.us/signin?returnUrl=/");
-        DriverContext.Driver.navigate().to("http://localhost:64429/");
-
-
-        // Method2 - Handle SSL warning if present
-//        try {
-//            driver.findElement(By.id("details-button")).click(); // Click on "Advanced"
-//            driver.findElement(By.id("proceed-link")).click();   // Click on "Proceed to site"
-//        } catch (Exception e) {
-//            System.out.println("SSL Warning not present, continuing...");
-//        }
-
+        InitializeBrowser(BrowserType.Chrome);
+        DriverContext.Browser.GoToUrl("http://localhost:64429/");
     }
+
+
+
+//    private WebDriver driver; // Declare WebDriver instance
+
+//    @BeforeMethod
+//    public void Initialize(){
+//        // Setup ChromeDriver using WebDriverManager
+//        WebDriverManager.chromedriver().setup();
+//
+////      Method1 - Skip SSL warnings entirely, you can configure ChromeOptions:
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--ignore-certificate-errors"); // Ignore SSL warnings
+//
+//        DriverContext.Driver = new ChromeDriver(options);
+//
+////        driver.navigate().to("https://test.thestoryofamerica.us/signin?returnUrl=/");
+//        DriverContext.Driver.navigate().to("http://localhost:64429/");
+//
+//
+//        // Method2 - Handle SSL warning if present
+////        try {
+////            driver.findElement(By.id("details-button")).click(); // Click on "Advanced"
+////            driver.findElement(By.id("proceed-link")).click();   // Click on "Proceed to site"
+////        } catch (Exception e) {
+////            System.out.println("SSL Warning not present, continuing...");
+////        }
+//
+//    }
 
     @Test
     public void Login() throws InterruptedException {
@@ -57,4 +70,6 @@ public class LoginTest extends Base {
 
 
     }
+
+
 }
