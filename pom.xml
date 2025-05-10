@@ -33,6 +33,12 @@
             <artifactId>testng</artifactId>
             <version>7.11.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
 
 <!--        &lt;!&ndash; JUnit 5 (Jupiter) &ndash;&gt;-->
 <!--        <dependency>-->
